@@ -18,33 +18,24 @@ app.use(bot.webhook('/webhook'));
 bot.on(LINEBot.Events.MESSAGE, function (replyToken, message) {
     console.log('replyToken', replyToken);
     if (message.isMessageType('text')) {
-        if (message.getText() == "紅棗今年還剩幾天") {
-            var date = new Date();
-            var year = date.getFullYear();
-            var date2 = new Date(year, 11, 31, 23, 59, 59);
-            var time = (date2 - date) / 1000;
-            var day = Math.floor(time / (24 * 60 * 60));
-            var hour = Math.floor(time % (24 * 60 * 60) / (60 * 60));
-            var minute = Math.floor(time % (24 * 60 * 60) % (60 * 60) / 60);
-            var second = Math.floor(time % (24 * 60 * 60) % (60 * 60) % 60);
-            var str = "倒數 " + day + "天" + hour + "小時" + minute + "分" + second + "秒￼";
-            var text = new LINEBot.TextMessageBuilder(str);
+        if (message.getText() === 'day') {
+            var text = new LINEBot.TextMessageBuilder('I\'m a super man!');
             var sticker = new LINEBot.StickerMessageBuilder(1, 109);
             bot.replyMultiMessage(replyToken, [text, sticker]).then(function (data) {
                 console.log('res1', data);
             }).catch(function (error) {
                 console.log('error1', error);
             });
-            console.log('紅棗今年還剩幾天1', message.getText());
+            console.log('res1', message.getText());
         } else {
-            var text1 = new LINEBot.TextMessageBuilder("Hi");
+            var text1 = new LINEBot.TextMessageBuilder('Hi');
             var sticker1 = new LINEBot.StickerMessageBuilder(1, 109);
             bot.replyMultiMessage(replyToken, [text1, sticker1]).then(function (data) {
                 console.log('res2', data);
             }).catch(function (error) {
                 console.log('error2', error);
             });
-            console.log('紅棗今年還剩幾天2', message.getText());
+            console.log('res2', message.getText());
         }
     } else {
         console.log('message.getText()', message.getText());

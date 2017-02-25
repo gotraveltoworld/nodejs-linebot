@@ -31,18 +31,18 @@ bot.on(LINEBot.Events.MESSAGE, function (replyToken, message) {
             var text = new LINEBot.TextMessageBuilder(str);
             var sticker = new LINEBot.StickerMessageBuilder(1, 109);
             bot.replyMultiMessage(replyToken, [text, sticker]).then(function (data) {
-
+                console.log('res1', data);
             }).catch(function (error) {
-
+                console.log('error1', error);
             });
             console.log('紅棗今年還剩幾天1', message.getText());
         } else {
             var text1 = new LINEBot.TextMessageBuilder("Hi");
             var sticker1 = new LINEBot.StickerMessageBuilder(1, 109);
             bot.replyMultiMessage(replyToken, [text1, sticker1]).then(function (data) {
-
+                console.log('res2', data);
             }).catch(function (error) {
-
+                console.log('error2', error);
             });
             console.log('紅棗今年還剩幾天2', message.getText());
         }

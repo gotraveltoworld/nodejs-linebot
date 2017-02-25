@@ -30,12 +30,21 @@ bot.on(LINEBot.Events.MESSAGE, function (replyToken, message) {
             var str = "倒數 " + day + "天" + hour + "小時" + minute + "分" + second + "秒￼";
             var text = new LINEBot.TextMessageBuilder(str);
             var sticker = new LINEBot.StickerMessageBuilder(1, 109);
-            bot
-                .replyMultiMessage(replyToken, [text, sticker])
-                .then(function (data) {})
-                .catch(function (error) {});
+            bot.replyMultiMessage(replyToken, [text, sticker]).then(function (data) {
+
+            }).catch(function (error) {
+
+            });
+            console.log('紅棗今年還剩幾天1', message.getText());
         } else {
-            console.log('紅棗今年還剩幾天', message.getText());
+            var text1 = new LINEBot.TextMessageBuilder("Hi");
+            var sticker1 = new LINEBot.StickerMessageBuilder(1, 109);
+            bot.replyMultiMessage(replyToken, [text1, sticker1]).then(function (data) {
+
+            }).catch(function (error) {
+
+            });
+            console.log('紅棗今年還剩幾天2', message.getText());
         }
     } else {
         console.log('message.getText()', message.getText());

@@ -15,7 +15,7 @@ var bot = LINEBot.create({
 app.use(bot.webhook('/webhook'));
 bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
     if (message.isMessageType('text')) {
-        if (message.getText() == "紅棗今年還剩幾天") {
+        if (message.getText() == "Day") {
             var date = new Date();
             var year = date.getFullYear();
             var date2 = new Date(year, 11, 31, 23, 59, 59);

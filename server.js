@@ -31,10 +31,12 @@ bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
             bot.replyMultiMessage(replyToken, [text, sticker]).then(function(data) {
             }).catch(function(error) {});
         } else {
+            var text1 = new LINEBot.TextMessageBuilder('Hi');
+            var sticker1 = new LINEBot.StickerMessageBuilder(1,109);
             bot.replyMultiMessage(replyToken,
                 [
-                    new LINEBot.TextMessageBuilder('Hi'),
-                    new LINEBot.StickerMessageBuilder(1,109)
+                    text1,
+                    sticker1
                 ]).then(function(data) {
             }).catch(function(error) {});
         }

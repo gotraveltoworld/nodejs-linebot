@@ -3,17 +3,19 @@ var server = require('http').Server(app);
 var LINEBot = require('line-messaging');
 
 app.set('port', process.env.PORT || 8080);
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.send('hello');
 });
 
 var bot = LINEBot.create({
     channelID: '1482947046',
     channelSecret: 'df2786945e22c3b8963bdae324c53654',
-    channelToken: 'oXujCqRaebFfWD4MZEsu3pPdwoO3ASeZtchwx8lTS6CTFYrZyBHBm9jPKu74Spk81IVkAi6m395Ck0jEsJGeeZVCkl68rs2m+5EZER3RpRveCPb6pJsgIWRxl3u+ux/u3Q+JgExekKyrUFg1Xo8kjwdB04t89/1O/w1cDnyilFU='
+    channelToken: 'oXujCqRaebFfWD4MZEsu3pPdwoO3ASeZtchwx8lTS6CTFYrZyBHBm9jPKu74Spk81IVkAi6m395Ck0jE' +
+            'sJGeeZVCkl68rs2m+5EZER3RpRveCPb6pJsgIWRxl3u+ux/u3Q+JgExekKyrUFg1Xo8kjwdB04t89/1O' +
+            '/w1cDnyilFU='
 }, server);
 app.use(bot.webhook('/webhook'));
-bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
+bot.on(LINEBot.Events.MESSAGE, function (replyToken, message) {
     console.log('replyToken', replyToken);
     if (message.isMessageType('text')) {
         if (message.getText() == "紅棗今年還剩幾天") {
@@ -27,19 +29,14 @@ bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
             var second = Math.floor(time % (24 * 60 * 60) % (60 * 60) % 60);
             var str = "倒數 " + day + "天" + hour + "小時" + minute + "分" + second + "秒￼";
             var text = new LINEBot.TextMessageBuilder(str);
-            var sticker = new LINEBot.StickerMessageBuilder(1,109);
-            bot.replyMultiMessage(replyToken, [text, sticker]).then(function(data) {
-            }).catch(function(error) {});
-        } else {
-            var text1 = new LINEBot.TextMessageBuilder('Hi');
-            var sticker1 = new LINEBot.StickerMessageBuilder(1,109);
-            bot.replyMultiMessage(replyToken,
-                [
-                    text1,
-                    sticker1
-                ]).then(function(data) {
-            }).catch(function(error) {});
+            var sticker = new LINEBot.StickerMessageBuilder(1, 109);
+            bot
+                .replyMultiMessage(replyToken, [text, sticker])
+                .then(function (data) {})
+                .catch(function (error) {});
         }
+    } else {
+        console.log('message.getText()', message.getText());
     }
 });
 

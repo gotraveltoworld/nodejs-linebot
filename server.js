@@ -34,6 +34,8 @@ bot.on(LINEBot.Events.MESSAGE, function (replyToken, message) {
                 .replyMultiMessage(replyToken, [text, sticker])
                 .then(function (data) {})
                 .catch(function (error) {});
+        } else {
+            console.log('紅棗今年還剩幾天', message.getText());
         }
     } else {
         console.log('message.getText()', message.getText());

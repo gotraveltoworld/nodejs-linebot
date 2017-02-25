@@ -14,8 +14,8 @@ var bot = LINEBot.create({
 }, server);
 app.use(bot.webhook('/webhook'));
 bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
+    console.log('replyToken', replyToken);
     if (message.isMessageType('text')) {
-        console.log(message);
         if (message.getText() == "Day") {
             var date = new Date();
             var year = date.getFullYear();

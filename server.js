@@ -1,24 +1,9 @@
-// const http = require('http');
-// const url = require('url');
-// const fixieUrl = url.parse(process.env.FIXIE_URL);
-// const requestUrl = url.parse('http://www.example.com');
-
-// http.get({
-//     host: fixieUrl.hostname,
-//     port: fixieUrl.port,
-//     path: requestUrl.href,
-//     headers: {
-//       Host: requestUrl.host,
-//       'Proxy-Authorization': `Basic ${new Buffer(fixieUrl.auth).toString('base64')}`,
-//     }
-// }, res => {
-//   console.log(`Got response: ${res.statusCode}`);
-// });
 const app = require('express')();
 const server = require('http').Server(app);
 const url = require('url');
 const fixieUrl = url.parse(process.env.FIXIE_URL);
-const requestUrl = url.parse('https://linebot-nodejs.herokuapp.com/');
+
+const requestUrl = url.parse('http://www.example.com');
 
 app.set('port', process.env.PORT || 8080);
 app.get('/', function (req, res) {

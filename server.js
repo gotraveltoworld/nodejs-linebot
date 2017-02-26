@@ -19,7 +19,7 @@ const server = require('http').Server(app);
 const url = require('url');
 const fixieUrl = url.parse(process.env.FIXIE_URL);
 
-const requestUrl = url.parse('http://www.example.com');
+const requestUrl = url.parse('https://linebot-nodejs.herokuapp.com/');
 
 app.get({
     host: fixieUrl.hostname,

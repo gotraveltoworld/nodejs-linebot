@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "express": "4.5.1",
-    "line-messaging": "^1.1.8"
+    "line-messaging": "^1.1.8",
+    "url": "^0.11.0"
   },
   "engines": {
     "node": "4.5.0"

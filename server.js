@@ -1,9 +1,9 @@
 const app = require('express')();
 const server = require('http').Server(app);
 const url = require('url');
-const fixieUrl = url.parse(process.env.FIXIE_URL);
+const fixieUrl = url.parse(process.env.QUOTAGUARDSTATIC_URL);
 
-const requestUrl = url.parse('http://www.example.com');
+const requestUrl = url.parse('https://linebot-nodejs.herokuapp.com/');
 
 app.set('port', process.env.PORT || 8080);
 app.get('/', function (req, res) {
